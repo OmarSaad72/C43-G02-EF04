@@ -1,0 +1,37 @@
+[
+  {
+    "EmpName": "Ahmed",
+    "Age": 29,
+    "Salary": 8000,
+    "DepartmentDeptId": 1
+  },
+  {
+    "EmpName": "Nadia",
+    "Age": 27,
+    "Salary": 5000,
+    "DepartmentDeptId": 2
+  },
+  {
+    "EmpName": "Soha",
+    "Age": 20,
+    "Salary": 3000,
+    "DepartmentDeptId": 1
+  },
+  {
+    "EmpName": "Mazen",
+    "Age": 25,
+    "Salary": 8000,
+    "DepartmentDeptId": 2
+  },
+  {
+    "EmpName": "Sameh",
+    "Age": 30,
+    "Salary": 9000,
+    "DepartmentDeptId": 1
+  },
+  {
+    "EmpName": "Pola",
+    "Age": 30,
+    "Salary": 5000
+  }
+]
