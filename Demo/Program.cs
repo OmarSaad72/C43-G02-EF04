@@ -50,7 +50,27 @@ namespace Demo
             //{
             //    Console.WriteLine(employee?.EmpName ?? "Not Found");
             //}
-            var department = (from d in dbContext.Departments.Include(d => d.Employees)
+            //var department = (from d in dbContext.Departments.Include(d => d.Employees)
+            //                  where d.DeptId == 1
+            //                  select d).FirstOrDefault();
+            //if (department != null)
+            //{
+            //    Console.WriteLine($"{department?.DeptId} & {department?.Name ?? "Not Found"}");
+            //    foreach (var item in department.Employees)
+            //    {
+            //        //Console.WriteLine(item.EmpName);   
+            //    }
+            //}
+            #endregion
+            #region Lazy Loading
+            //var employee = (from e in dbContext.Employees
+            //                where e.DeptId == 1
+            //                select e).FirstOrDefault();
+            //if (employee != null)
+            //{
+            //    Console.WriteLine(employee?.EmpName ?? "Not Found");
+            //}
+            var department = (from d in dbContext.Departments
                               where d.DeptId == 1
                               select d).FirstOrDefault();
             if (department != null)
@@ -58,7 +78,7 @@ namespace Demo
                 Console.WriteLine($"{department?.DeptId} & {department?.Name ?? "Not Found"}");
                 foreach (var item in department.Employees)
                 {
-                    Console.WriteLine(item.EmpName);   
+                    //Console.WriteLine(item.EmpName);   
                 }
             }
             #endregion

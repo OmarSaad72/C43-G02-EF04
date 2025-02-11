@@ -24,7 +24,7 @@ namespace Demo.Data.Models
         [Required]
         public string Address { get; set; }
         [InverseProperty(nameof(Department.Employees))]
-        public Department? Department { get; set; }  // Navigational Propert {One}
+        public virtual Department? Department { get; set; }  // Navigational Propert {One}
         [ForeignKey(nameof(Department))]
         public int DeptId { get; set; }
     }

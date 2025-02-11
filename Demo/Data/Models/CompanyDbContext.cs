@@ -12,7 +12,7 @@ namespace Demo.Data.Models
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server =.;Database= MyCompany; Trusted_Connection= true; trustservercertificate= true");
+            optionsBuilder.UseLazyLoadingProxies().UseSqlServer("Server =.;Database= MyCompany; Trusted_Connection= true; trustservercertificate= true");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -14,6 +14,6 @@ namespace Demo.Data.Models
         public int DeptId { get; set; }
         public string Name { get; set; }
         [InverseProperty(nameof(Employee.Department))]
-        public ICollection<Employee> Employees { get; set; } = new HashSet<Employee>(); // Navigational Propert {Many}
+        public virtual ICollection<Employee> Employees { get; set; } = new HashSet<Employee>(); // Navigational Propert {Many}
     }
 }
