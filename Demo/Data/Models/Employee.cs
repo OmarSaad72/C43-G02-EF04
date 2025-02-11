@@ -17,15 +17,15 @@ namespace Demo.Data.Models
         public string EmpName { get; set; }
         [Column(TypeName = "decimal(12,2)")]
         public decimal Salary { get; set; }
-        [Range(18, 58)]
-        public int? Age { get; set; }
-        [EmailAddress]
-        public string Email { get; set; }
-        [Required]
-        public string Address { get; set; }
-        [InverseProperty(nameof(Department.Employees))]
-        public virtual Department? Department { get; set; }  // Navigational Propert {One}
-        [ForeignKey(nameof(Department))]
-        public int DeptId { get; set; }
+        /******************************Department Relation (Work 1: M)******************************/
+        [InverseProperty(nameof(Models.Department.Employees))]
+        public virtual Department? Department { get; set; } //Navigational Property ==> One Side
+        [ForeignKey(nameof(Employee.Department))]
+        public int? DepartmentDeptId { get; set; }
+        /******************************Department Relation (Manage 1: 1)******************************/
+        [InverseProperty(nameof(Models.Department.Manager))]
+        public virtual Department? DepartmentManage { get; set; }
+        [ForeignKey(nameof(DepartmentManage))]
+        public int? DeptManageId { get; set; }
     }
 }

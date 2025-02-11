@@ -12,8 +12,14 @@ namespace Demo.Data.Models
     {
         [Key]
         public int DeptId { get; set; }
-        public string Name { get; set; }
+        public string? Name { get; set; }
+
+        //Works ==> 1 : M
         [InverseProperty(nameof(Employee.Department))]
-        public virtual ICollection<Employee> Employees { get; set; } = new HashSet<Employee>(); // Navigational Propert {Many}
+        public virtual ICollection<Employee> Employees { get; set; } = new HashSet<Employee>(); //   ==> Side Many
+
+        //Manage ==> 1 : 1
+        [InverseProperty(nameof(Employee.DepartmentManage))]
+        public virtual Employee Manager { get; set; }
     }
 }

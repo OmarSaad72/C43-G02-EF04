@@ -16,7 +16,7 @@ namespace Demo.Data.DataSeed
             var departments = JsonSerializer.Deserialize <List<Department>>(DepartmentFile);
             if (!dbContext.Departments.Any())
             {
-                if (departments.Count() > 0)
+                if (departments?.Count() > 0)
                 {
                     foreach (var department in departments)
                     {
