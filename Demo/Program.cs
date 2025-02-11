@@ -147,34 +147,54 @@ namespace Demo
             //                 E.EmpName
             //             };
             //Employees ==> Outer & Department ==> Inner
-            var result = dbContext.Departments.GroupJoin(dbContext.Employees,
-                 d => d.DeptId, e => e.DepartmentDeptId, (departments, employees) => new
-                 {
-                     departments,
-                     employees = employees.DefaultIfEmpty()  //Null
-                 }).SelectMany(z => z.employees, (z, Employee) => new
-                 {
-                     z.departments,
-                     Employee
-                 });
-            var result1 = from d in dbContext.Departments
-                          join e in dbContext.Employees
-                          on d.DeptId equals e.DepartmentDeptId
-                          into emp
-                          select new
-                          {
-                              d,
-                              emp = emp.DefaultIfEmpty()
-                          } into x
-                          from e in x.emp
-                          select new
-                          {
-                              x.d,
-                              e
-                          };
-            foreach (var item in result1)
+            //var result = dbContext.Departments.GroupJoin(dbContext.Employees,
+            //     d => d.DeptId, e => e.DepartmentDeptId, (departments, employees) => new
+            //     {
+            //         departments,
+            //         employees = employees.DefaultIfEmpty()  //Null
+            //     }).SelectMany(z => z.employees, (z, Employee) => new
+            //     {
+            //         z.departments,
+            //         Employee
+            //     });
+            //var result1 = from d in dbContext.Departments
+            //              join e in dbContext.Employees
+            //              on d.DeptId equals e.DepartmentDeptId
+            //              into emp
+            //              select new
+            //              {
+            //                  d,
+            //                  emp = emp.DefaultIfEmpty()
+            //              } into x
+            //              from e in x.emp
+            //              select new
+            //              {
+            //                  x.d,
+            //                  e
+            //              };
+            //foreach (var item in result1)
+            //{
+            //    Console.WriteLine($"{item.d.Name} & {item.e?.EmpName ?? "NotFound"}");
+            //}
+            #endregion
+            #region Cross Join
+            var result = from e in dbContext.Employees
+                         from d in dbContext.Departments
+                         select new
+                         {
+                             emp = e,
+                             dept = d
+                         };
+            result = dbContext.Employees.SelectMany(e => dbContext.Departments.Select
+            (d => new
             {
-                Console.WriteLine($"{item.d.Name} & {item.e?.EmpName ?? "NotFound"}");
+                emp = e,
+                dept = d
+            }));
+
+            foreach (var item in result)
+            {
+                Console.WriteLine(item.emp.EmpName + " " + item.dept.Name);
             }
             #endregion
             #endregion
