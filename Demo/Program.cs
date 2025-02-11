@@ -1,10 +1,16 @@
-﻿namespace Demo
+﻿using Demo.Data.DataSeed;
+using Demo.Data.Models;
+
+namespace Demo
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("Hello, World!");
+            #region Data Seeding
+            //using CompanyDbContext dbContext = new CompanyDbContext();
+            //CompanyDbContextSeed.Seed(dbContext);
+            #endregion
         }
     }
 }
